@@ -22,13 +22,13 @@ public class BlogController {
     public String blogHome(Model model) {
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
-        return "blog";
+        return "pages/blog";
     }
 
     @GetMapping("/blog/add")
     public String addBlog(Model model) {
 
-        return "add-blog";
+        return "pages/add-blog";
     }
 
     @PostMapping("/blog/add")
@@ -44,7 +44,7 @@ public class BlogController {
 
         Optional<Post> post = postRepository.findById(ID);
         post.ifPresent(post1 -> model.addAttribute("post", post1));
-        return "detail";
+        return "pages/detail";
     }
 
     @GetMapping("/blog/edite/{id}")
@@ -53,7 +53,7 @@ public class BlogController {
         if (!postRepository.existsById(id)) return "redirect:/blog";
         Post post = postRepository.findById(id).orElseThrow();
         model.addAttribute("post", post);
-        return "edite";
+        return "pages/edite";
     }
 
     @PostMapping("/blog/edite/{id}")

@@ -11,7 +11,7 @@ public class WidgetsController {
 
     @GetMapping("/wetter")
     public String wetter(){
-        return "wetter";
+        return "widgets/wetter";
     }
 
 }
